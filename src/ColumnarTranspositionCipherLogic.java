@@ -17,7 +17,7 @@ public class ColumnarTranspositionCipherLogic {
 
     }
 
-    private String keyConvert(String key){
+    public static String keyConvert(String key){
 
         StringBuilder result = new StringBuilder();
 

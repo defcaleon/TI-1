@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println(ob.toString());*/
 
-        ColumnarTranspositionCipher ob2= new ColumnarTranspositionCipher("aaabbbccc  sdsewer   ","I_REALLY_LIKE_PUZZLES");
+        /*ColumnarTranspositionCipher ob2= new ColumnarTranspositionCipher("aaabbbccc  sdsewer   ","I_REALLY_LIKE_PUZZLES");
 
         ColumnarTranspositionCipherLogic columnarTranspositionCipherLogic = new ColumnarTranspositionCipherLogic();
 
@@ -22,8 +22,11 @@ public class Main {
         columnarTranspositionCipherLogic.encode(ob2);
         System.out.println(ob2.toString());
         columnarTranspositionCipherLogic.decode(ob2);
-        System.out.println(ob2.toString());
+        System.out.println(ob2.toString());*/
 
+        PlayFairCipher ob3= new PlayFairCipher("aaabbbccc  sdsewer   ","I_REALLY_LIKE_PUZZLES", PlayFairCipher.Lang.en);
+        PlayFairCipherLogic playFairCipherLogic = new PlayFairCipherLogic();
+        playFairCipherLogic.encode(ob3);
     }
 
 }

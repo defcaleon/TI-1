@@ -1,11 +1,24 @@
-public class ColumnarTranspositionCipher {
+public class PlayFairCipher {
+
+    public enum Lang{en,ru};
 
     private String key;
     private String cipher;
+    private Lang lang;
 
-    public ColumnarTranspositionCipher(String key, String cipher) {
+
+    public PlayFairCipher(String key, String cipher,Lang lang) {
         this.key = key;
         this.cipher = cipher;
+        this.lang=lang;
+    }
+
+    public Lang getLang() {
+        return lang;
+    }
+
+    public void setLang(Lang lang) {
+        this.lang = lang;
     }
 
     public String getKey() {
@@ -26,9 +39,10 @@ public class ColumnarTranspositionCipher {
 
     @Override
     public String toString() {
-        return "ColumnarTranspositionCipher{" +
+        return "PlayFairCipher{" +
                 "key='" + key + '\'' +
                 ", cipher='" + cipher + '\'' +
+                ", lang=" + lang +
                 '}';
     }
 }
