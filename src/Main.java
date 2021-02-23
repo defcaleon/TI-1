@@ -18,7 +18,11 @@ public class Main {
 
         ColumnarTranspositionCipherLogic columnarTranspositionCipherLogic = new ColumnarTranspositionCipherLogic();
 
+        System.out.println(ob2.toString());
         columnarTranspositionCipherLogic.encode(ob2);
+        System.out.println(ob2.toString());
+        columnarTranspositionCipherLogic.decode(ob2);
+        System.out.println(ob2.toString());
 
     }
 
