@@ -24,7 +24,7 @@ public class Main {
         columnarTranspositionCipherLogic.decode(ob2);
         System.out.println(ob2.toString());*/
 
-        PlayFairCipher ob3= new PlayFairCipher("aaabbbccc  sdsewer   ","I_REALLY_LIKE_PUZZLES", PlayFairCipher.Lang.en);
+        PlayFairCipher ob3= new PlayFairCipher("playfair example","Hide the gold in the tree stump", PlayFairCipher.Lang.en);
         PlayFairCipherLogic playFairCipherLogic = new PlayFairCipherLogic();
         playFairCipherLogic.encode(ob3);
     }
