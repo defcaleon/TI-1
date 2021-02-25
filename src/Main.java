@@ -26,7 +26,12 @@ public class Main {
 
         PlayFairCipher ob3= new PlayFairCipher("playfair example","Hide the gold in the tree stump", PlayFairCipher.Lang.en);
         PlayFairCipherLogic playFairCipherLogic = new PlayFairCipherLogic();
+
+        System.out.println(ob3.toString());
         playFairCipherLogic.encode(ob3);
+        System.out.println(ob3.toString());
+        playFairCipherLogic.decode(ob3);
+        System.out.println(ob3.toString());
     }
 
 }

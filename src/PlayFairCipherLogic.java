@@ -9,7 +9,6 @@ public class PlayFairCipherLogic {
         String key = ob.getKey();
 
         word = makeBigrams(word,lang);
-        System.out.println(word);
 
         Set<Character> set = setInit(lang);
         key = ColumnarTranspositionCipherLogic.keyConvert(key);
@@ -32,7 +31,7 @@ public class PlayFairCipherLogic {
     }
 
     private Set<Character> enSetInit() {
-        Set<Character> enSet = new HashSet<Character>();
+        Set<Character> enSet = new HashSet<>();
         for (char c = 'A'; c <= 'Z'; c++) {
             enSet.add(c);
 
@@ -207,15 +206,76 @@ public class PlayFairCipherLogic {
         String word = ob.getCipher();
         String key = ob.getKey();
 
-        word = makeBigrams(word,lang);
-        System.out.println(word);
+        word = word.toUpperCase();
+        if(word.length()%2==1){
+            word=word+"X";
+        }
+
+
 
         Set<Character> set = setInit(lang);
         key = ColumnarTranspositionCipherLogic.keyConvert(key);
         char[][] matrix = matrixInit(lang);
         fillMatrix(matrix, set, key);
 
-        String newWord=makeEncodeWord(matrix,word);
+
+        String newWord=makeDecodeWord(matrix,word);
         ob.setCipher(newWord);
+    }
+
+    private String makeDecodeWord(char[][] matrix, String biagram){
+
+        StringBuilder result = new StringBuilder();
+
+        char[] chars=new char[2];
+
+        for(int i=0;i<biagram.length();i+=2){
+
+            chars[0]=biagram.charAt(i);
+            chars[1]=biagram.charAt(i+1);
+
+            String pair = new String(chars);
+
+            chars=decodeBiagram(matrix,pair);
+
+            result.append(chars[0]);
+            result.append(chars[1]);
+        }
+
+        return  result.toString();
+    }
+
+    private char[] decodeBiagram(char[][] matrix, String pair){
+
+        if(matrix==null||pair==null){
+            return null;
+        }
+
+
+
+        MatrixPos let1 = getPosition(matrix,pair.charAt(0));
+        MatrixPos let2 = getPosition(matrix,pair.charAt(1));
+        char[] chars = new char[2];
+
+
+        int rowSize=matrix.length;
+        int colSize=matrix[0].length;
+
+        if(let1.getRow()==let2.getRow()){
+            chars[0]=let1.getCol()-1<0? matrix[let1.getRow()][colSize-1]:matrix[let1.getRow()][let1.getCol()-1];
+            chars[1]=let2.getCol()-1<0? matrix[let2.getRow()][colSize-1]:matrix[let2.getRow()][let2.getCol()-1];
+        }else
+        {
+            if(let1.getCol()==let2.getCol()){
+                chars[0]=let1.getRow()-1<0? matrix[rowSize-1][let1.getCol()]:matrix[let1.getRow()-1][let1.getCol()];
+                chars[1]=let2.getRow()-1<0? matrix[rowSize-1][let2.getCol()]:matrix[let2.getRow()-1][let2.getCol()];
+            }else
+            {
+                chars[0]=matrix[let1.getRow()][let2.getCol()];
+                chars[1]=matrix[let2.getRow()][let1.getCol()];
+
+            }
+        }
+        return chars;
     }
 }
