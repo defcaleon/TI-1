@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ChoiceBox layoutX="41.0" layoutY="27.0" prefHeight="25.0" prefWidth="388.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="211.0" AnchorPane.topAnchor="27.0" />
+      <ToggleButton layoutX="470.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Применить" AnchorPane.leftAnchor="470.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0" />
+   </children>
+</AnchorPane>
