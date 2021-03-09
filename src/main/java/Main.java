@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println(ob.toString());*/
 
-        /*ColumnarTranspositionCipher ob2= new ColumnarTranspositionCipher("aaabbbccc  sdsewer   ","I_REALLY_LIKE_PUZZLES");
+        /*ColumnarTranspositionCipher ob2= new ColumnarTranspositionCipher("aaabbbccc23ывы  sdsewer   ","I_REALLY_LIKE_PUZZLES");
 
         ColumnarTranspositionCipherLogic columnarTranspositionCipherLogic = new ColumnarTranspositionCipherLogic();
 
@@ -24,7 +24,7 @@ public class Main {
         columnarTranspositionCipherLogic.decode(ob2);
         System.out.println(ob2.toString());*/
 
-        PlayFairCipher ob3= new PlayFairCipher("playfair example","Hide the gold in the tree stump", PlayFairCipher.Lang.en);
+        PlayFairCipher ob3= new PlayFairCipher("playfair23ваывы example","Hide the gold in the tree stump", PlayFairCipher.Lang.en);
         PlayFairCipherLogic playFairCipherLogic = new PlayFairCipherLogic();
 
         System.out.println(ob3.toString());
