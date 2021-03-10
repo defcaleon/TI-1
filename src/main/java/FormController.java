@@ -1,3 +1,4 @@
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -5,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +17,9 @@ public class FormController implements Initializable {
     public TextArea resultText;
     public AnchorPane panel1;
     public AnchorPane panel2;
-    ObservableList list = FXCollections.observableArrayList();
+    public TableView matrixTable;
+
+    private ObservableList list = FXCollections.observableArrayList();
 
     @FXML
     private ChoiceBox<String> choiceBox;
@@ -65,6 +69,7 @@ public class FormController implements Initializable {
         rBtn1.fire();
         panel1.setVisible(false);
         panel2.setVisible(false);
+        matrixInit();
     }
 
     public void mainBtn(MouseEvent mouseEvent) {
@@ -193,5 +198,18 @@ public class FormController implements Initializable {
             }
         }
 
+    }
+
+    public void matrixInit() {
+        String[][] dataArray =
+                {{"1", "2", "3", "4", "5","6"},
+                        {"1", "2", "3", "4", "5",},
+                        {"6", "7", "8", "9", "10",},
+                        {"11", "12", "13", "14", "15"}};
+
+        for (int i=0;i<6;i++){
+            TableColumn<String,String> col = new TableColumn<>(dataArray[0][i]);
+            matrixTable.getColumns().addAll(col);
+        }
     }
 }
