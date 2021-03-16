@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class RotaryCipher {
 
+    private char[][] cipherMatrix;
     private boolean[][] matrix;
     private String word;
 
@@ -24,6 +25,14 @@ public class RotaryCipher {
 
     public void setWord(String word) {
         this.word = word;
+    }
+
+    public char[][] getCipherMatrix() {
+        return cipherMatrix;
+    }
+
+    public void setCipherMatrix(char[][] cipherMatrix) {
+        this.cipherMatrix = cipherMatrix;
     }
 
     @Override

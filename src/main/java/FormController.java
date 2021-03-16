@@ -24,7 +24,7 @@ public class FormController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBox;
     @FXML
-    private  ChoiceBox<String> langBox;
+    private ChoiceBox<String> langBox;
 
     @FXML
     private RadioButton rBtn1;
@@ -42,17 +42,18 @@ public class FormController implements Initializable {
         String c = "play fair cipher";
         String d = "cipher rotary grid";
 
-        list.addAll(a, b,c,d);
+        list.addAll(a, b, c, d);
         choiceBox.getItems().addAll(list);
         choiceBox.setValue(a);
 
 
     }
-    private void langBoxload(){
+
+    private void langBoxload() {
         list.removeAll(list);
-        String a="en";
-        String b="ru";
-        list.addAll(a,b);
+        String a = "en";
+        String b = "ru";
+        list.addAll(a, b);
         langBox.getItems().addAll(list);
         langBox.setValue(a);
         langBox.setVisible(false);
@@ -74,17 +75,16 @@ public class FormController implements Initializable {
 
     public void mainBtn(MouseEvent mouseEvent) {
 
-        switch (choiceBox.getValue()){
+        switch (choiceBox.getValue()) {
 
-            case "rail fence cipher":{
-                int intKey=isInt(key.getText());
-                if(intKey!=-1){
-                    RailFenceCipher ob= new RailFenceCipher(intKey, text.getText());
+            case "rail fence cipher": {
+                int intKey = isInt(key.getText());
+                if (intKey != -1) {
+                    RailFenceCipher ob = new RailFenceCipher(intKey, text.getText());
                     RailFenceCipherLogic logic = new RailFenceCipherLogic();
-                    if( rBtn1.isSelected()){
+                    if (rBtn1.isSelected()) {
                         logic.encode(ob);
-                    }else
-                    {
+                    } else {
                         logic.decode(ob);
                     }
                     resultText.setText(ob.getCipher());
@@ -92,34 +92,31 @@ public class FormController implements Initializable {
 
                 break;
             }
-            case "columnur cipher":{
-                ColumnarTranspositionCipher ob =new ColumnarTranspositionCipher(key.getText(),text.getText());
+            case "columnur cipher": {
+                ColumnarTranspositionCipher ob = new ColumnarTranspositionCipher(key.getText(), text.getText());
                 ColumnarTranspositionCipherLogic logic = new ColumnarTranspositionCipherLogic();
-                if( rBtn1.isSelected()){
+                if (rBtn1.isSelected()) {
                     logic.encode(ob);
-                }else
-                {
+                } else {
                     logic.decode(ob);
                 }
                 resultText.setText(ob.getCipher());
                 break;
             }
-            case  "play fair cipher":{
+            case "play fair cipher": {
                 PlayFairCipher.Lang lang;
-                if(langBox.getValue()=="en"){
-                    lang= PlayFairCipher.Lang.en;
-                }else
-                {
-                    lang= PlayFairCipher.Lang.ru;
+                if (langBox.getValue() == "en") {
+                    lang = PlayFairCipher.Lang.en;
+                } else {
+                    lang = PlayFairCipher.Lang.ru;
                 }
 
-                if(correctEnRusWord(text.getText(),lang)){
-                    PlayFairCipher ob=new PlayFairCipher(key.getText(),text.getText(), lang);
-                    PlayFairCipherLogic logic= new PlayFairCipherLogic();
-                    if( rBtn1.isSelected()){
+                if (correctEnRusWord(text.getText(), lang)) {
+                    PlayFairCipher ob = new PlayFairCipher(key.getText(), text.getText(), lang);
+                    PlayFairCipherLogic logic = new PlayFairCipherLogic();
+                    if (rBtn1.isSelected()) {
                         logic.encode(ob);
-                    }else
-                    {
+                    } else {
                         logic.decode(ob);
                     }
                     resultText.setText(ob.getCipher());
@@ -128,7 +125,7 @@ public class FormController implements Initializable {
 
                 break;
             }
-            case "cipher rotary grid":{
+            case "cipher rotary grid": {
                 break;
             }
         }
@@ -137,12 +134,12 @@ public class FormController implements Initializable {
     }
 
 
-    private int isInt(String word){
+    private int isInt(String word) {
         try {
-            int  intValue = Integer.parseInt(word);
-            if(intValue>0){
+            int intValue = Integer.parseInt(word);
+            if (intValue > 0) {
                 return intValue;
-            }else{
+            } else {
                 generateAndShowAlert("Number should be more than 0");
             }
         } catch (NumberFormatException e) {
@@ -151,7 +148,7 @@ public class FormController implements Initializable {
         return -1;
     }
 
-    private void generateAndShowAlert(String msg){
+    private void generateAndShowAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("ERROR");
         alert.setHeaderText(null);
@@ -163,12 +160,12 @@ public class FormController implements Initializable {
 
     private boolean correctEnRusWord(String word, PlayFairCipher.Lang lang) {
         if (lang == PlayFairCipher.Lang.en) {
-            if(word.matches("^[a-zA-Z\\s]*$")){
-                return  true;
+            if (word.matches("^[a-zA-Z\\s]*$")) {
+                return true;
             }
-        }else {
-            if(word.matches("^[а-яА-Я\\s]*$")){
-                return  true;
+        } else {
+            if (word.matches("^[а-яА-Я\\s]*$")) {
+                return true;
             }
         }
         generateAndShowAlert("Input word can't contain these symbols");
@@ -178,20 +175,21 @@ public class FormController implements Initializable {
     public void BtnOK(MouseEvent mouseEvent) {
 
         switch (choiceBox.getValue()) {
-            case "rail fence cipher": case "columnur cipher":{
+            case "rail fence cipher":
+            case "columnur cipher": {
                 panel1.setVisible(true);
                 panel2.setVisible(false);
                 langBox.setVisible(false);
                 break;
             }
-            case  "play fair cipher":{
+            case "play fair cipher": {
 
                 panel1.setVisible(true);
                 panel2.setVisible(false);
                 langBox.setVisible(true);
                 break;
             }
-            case "cipher rotary grid":{
+            case "cipher rotary grid": {
                 panel1.setVisible(false);
                 panel2.setVisible(true);
                 break;
@@ -202,13 +200,13 @@ public class FormController implements Initializable {
 
     public void matrixInit() {
         String[][] dataArray =
-                {{"1", "2", "3", "4", "5","6"},
+                {{"1", "2", "3", "4", "5", "6"},
                         {"1", "2", "3", "4", "5",},
                         {"6", "7", "8", "9", "10",},
                         {"11", "12", "13", "14", "15"}};
 
-        for (int i=0;i<6;i++){
-            TableColumn<String,String> col = new TableColumn<>(dataArray[0][i]);
+        for (int i = 0; i < 6; i++) {
+            TableColumn<String, String> col = new TableColumn<>(dataArray[0][i]);
             matrixTable.getColumns().addAll(col);
         }
     }
